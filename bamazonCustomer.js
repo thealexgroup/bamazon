@@ -172,7 +172,7 @@ function selectQuantityToPurchase() {
  	    console.log("\n !!!!!!!!!! Insufficient Quantity !!!!!!!!!! \n")
 
       //list the items in stock again...
-  		showQuantity(); 	 
+      showQuantity(); 	 
     }
   });
 }; //end quantity to purchase

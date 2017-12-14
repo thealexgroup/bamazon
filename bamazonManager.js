@@ -27,9 +27,9 @@ var connection = mysql.createConnection({
 //if connected start doing some work, or throw error
 connection.connect(function(err) {
   if (err) throw err;
+
   //reset global variables. 
-//  resetVariables(); 
-getSelectionOfItems();
+  resetVariables(); 
 });
 
 
@@ -58,7 +58,8 @@ function getSelectionOfItems() {
     for (var i =0; i < res.length; i++) {
       inventoryItems.push(res[i]);
     }
-   selectManagementOption();
+    //start the management options menu
+    selectManagementOption();
   });
 };
 
@@ -153,7 +154,7 @@ function addInventory() {
                + "\t Price: $" + inventoryItems[i].price);
    };
   selectItem();
-}; //end of 
+}; //end of add inventory
 
 
 function selectItem() {
@@ -167,7 +168,7 @@ function selectItem() {
       name: "addId"
     }]).then  (function(inqRes) {
 
-      //if it's a number greater than zero, write to variable and invoke add quantity
+      //if it's a number greater than zero but in the ID range, write to variable and invoke add quantity
       if (inqRes.addId > 0 && inqRes.addId <= inventoryItems.length ) {
       itemId = inqRes.addId;
       howManyToAdd();
@@ -252,6 +253,7 @@ function addProduct() {
       message: "\n Number of items in stock? ",
       name: "addQuantity",
       validate: function(val) {
+      	//regular expression making certain it's a number
         var reg = /^\d+$/;
         return reg.test(val) || "Number of items should be a number!";
       }
@@ -261,23 +263,27 @@ function addProduct() {
       message: "\n What is the per item price for this? ",
       name: "newPrice",
       validate: function(val2) {
+      	//regular expression making certain it's a valid price	
         var reg2 = /^(?!0+(\.0+)?$)\d{0,5}(.\d{1,2})?$/;
         return reg2.test(val2) || "Enter a valid price!";
       }
     }]).then  (function(inqRes) {
-      var query = connection.query(
-        "INSERT INTO products SET ?",
-        {
-      product_name: inqRes.newProduct,
-      department_name: inqRes.toDepartment,
-      stock_quantity: inqRes.addQuantity,
-      price: inqRes.newPrice
-    },
-    function(err, res) {
-      console.log(res.affectedRows + " product inserted!\n");
-      // Call updateProduct AFTER the INSERT completes
-      resetVariables();
-    }
-   );
- });
+
+    	//this actually inserts the new product in to the database
+        var query = connection.query(
+        	"INSERT INTO products SET ?",
+        	{
+        		product_name: inqRes.newProduct,
+                department_name: inqRes.toDepartment,
+                stock_quantity: inqRes.addQuantity,
+                price: inqRes.newPrice
+            },
+            function(err, res) {
+            	console.log(res.affectedRows + " product inserted!\n");
+
+                // Call updateProduct AFTER the INSERT completes
+                resetVariables();
+            }
+        };
+    });
 }
