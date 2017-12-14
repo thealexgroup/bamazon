@@ -32,6 +32,7 @@ Running the Node application called 'bamazonManager.js' application will first d
 	* View low inventory - those items with less than 5 in stock
 	* Add to inventory - add stock to any item
 	* Add new product - insert a new product in to the bamazon database
+	* Quit Menu
 
 *View producs for sale* simply lists all product available where at least 1 is in stock.
 
