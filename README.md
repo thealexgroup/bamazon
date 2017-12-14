@@ -10,22 +10,19 @@ Running the Node application called 'bamazonCustomer.js' will first display all 
 
 Bamazon then prompts users with two messages: 
 
-	* The first ask them the ID of the product they would like to buy. 
-	* The second message should ask how many units of the product they would like to buy.
+	* The first asks the user the ID of the product they would like to buy. 
+	* The second message asks how many units of the product they would like to buy.
 
 Once an order has been placed the application checks to see if the store has enough of the product to meet the user's request. *If not*, the app logs the insufficient stock message and asks the item ID again.
 
-However, if the store *does* have enough of the product, it will fulfill the user’s order showing the total price of the order as well as updating the MySQL database to reflect the new quantity. 
+However, if the store *does* have enough of the product, it will fulfill the user’s order showing the total price of the order as well as updating the MySQL database to reflect the new quantity. Any additional requests will show new stock quantites to the user.  If there are zero items left in stock, that item will not be available for purchase.  
 
-It will then ask if you would like to continue shopping, repeating the process above.  If the customer is asked if they would like to continue shopping and selects *no*, the app will exit.
-
-**FUNCTIONALITY**  
-[View video of working app here](link to whereever)
+The app will then ask the user if they would like to continue shopping, repeating the process above if "yes".  If the customer is asked if they would like to continue shopping and selects "no", the app will exit.
 
 ** INSTRUCTIONS FOR MANAGER **
 
 bamazonManager.js - A *Node.js* & *MySQL* command line manager app that allows viewing, adding stock to, and creating
-new inventory
+new inventory.
 
 This uses the same database as the *CUSTOMER* app, bamazon with the same table, products.
 
@@ -45,7 +42,6 @@ Running the Node application called 'bamazonManager.js' application will first d
 *Add new product* allows manager to insert a new item with relevant info.
 
 Once the manager is done managing, the Quit Menu option is selected to exit the app.  
-
 
 **FUNCTIONALITY**  
 [View video of working app here](https://drive.google.com/open?id=1WOMIorGrY2K_oJvV3Gy14qM28iOfeF5Y)
