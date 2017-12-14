@@ -1,0 +1,22 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thealexgroup/bamazon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thealexgroup/bamazon/issues"
+  },
+  "homepage": "https://github.com/thealexgroup/bamazon#readme",
+  "dependencies": {
+    "inquirer": "^4.0.1"
+  }
+}
